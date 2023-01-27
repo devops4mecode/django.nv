@@ -1,12 +1,11 @@
-name: Django                                  # workflow name
+name: DjangoWorkflow                               # workflow name
 
 on:
-  push:                                       
+  push:
     branches:                                 # similar to "only" in GitLab
       - main
 
 jobs:
-	
   build:
     runs-on: ubuntu-latest                    # similar to "image" in GitLab
     steps:
@@ -44,6 +43,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'MEDIUM'
+        continue-on-error: true             # allow the build to fail, similar to "allow_failure: true" in GitLab
 
   integration:
     runs-on: ubuntu-latest
